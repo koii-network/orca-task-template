@@ -15,7 +15,7 @@ The Orca task template is designed to simplify the steps needed for integration 
 
 ### Container Creation
 
-A sample container is provided in `pod`.
+A sample container is provided in the `container` folder.
 
 ### Container Port
 
