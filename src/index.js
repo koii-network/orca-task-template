@@ -1,10 +1,10 @@
-import { initializeTaskManager } from '@_koii/task-runner';
+import { initializeTaskManager } from '@_koii/task-manager';
 import {
   initializeOrcaClient,
   getOrcaClient,
-} from '@_koii/task-runner/extensions';
+} from '@_koii/task-manager/extensions';
 import { config } from './orcaSettings.js';
-import { storeFile } from './helpers.js';
+import { storeFile, getFile } from './helpers.js';
 
 async function setup() {
   // define any steps that must be executed before the task starts
@@ -53,8 +53,7 @@ async function audit(cid, roundNumber) {
    * and sends them to your container for auditing
    */
   console.log(`AUDIT SUBMISSION FOR ROUND ${roundNumber}`);
-  const fileBlob = await client.getFile(cid, 'submission.json');
-  const submission = await fileBlob.text();
+  const submission = await getFile(cid);
   const orcaClient = await getOrcaClient();
   const orca = await orcaClient.get();
   const result = await orca.podCall(`audit`, {

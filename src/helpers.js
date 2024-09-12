@@ -2,7 +2,7 @@ import { namespaceWrapper } from '@_koii/namespace-wrapper';
 import { KoiiStorageClient } from '@_koii/storage-task-sdk';
 import fs from 'fs';
 
-export async function storeFile(data, filename = 'value.json') {
+export async function storeFile(data, filename = 'submission.json') {
   // Create a new instance of the Koii Storage Client
   const client = new KoiiStorageClient();
   const basePath = await namespaceWrapper.getBasePath();
@@ -25,4 +25,10 @@ export async function storeFile(data, filename = 'value.json') {
     // Delete the temp file
     fs.unlinkSync(`${basePath}/${filename}`);
   }
+}
+
+export async function getFile(cid, filename = 'submission.json') {
+  const storageClient = await getOrcaClient();
+  const fileBlob = await storageClient.getFile(cid, filename);
+  return await fileBlob.text();
 }

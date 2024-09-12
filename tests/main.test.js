@@ -1,4 +1,4 @@
-import { taskRunner } from '@_koii/task-runner';
+import { taskRunner } from '@_koii/task-manager';
 import { namespaceWrapper, _server } from '@_koii/namespace-wrapper';
 import Joi from 'joi';
 import axios from 'axios';
