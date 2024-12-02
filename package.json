@@ -1,6 +1,6 @@
 {
   "name": "js_app_deploy",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "src/index.js",
   "type": "module",
@@ -18,7 +18,7 @@
   "dependencies": {
     "@_koii/namespace-wrapper": "^1.0.1",
     "@_koii/storage-task-sdk": "^1.2.7",
-    "@_koii/task-manager": "^0.0.2",
+    "@_koii/task-manager": "^1.0.0",
     "@_koii/web3.js": "^0.1.11",
     "axios": "^1.7.2",
     "cross-spawn": "^7.0.3",
