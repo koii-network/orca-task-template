@@ -57,8 +57,8 @@ audit_window: 600
 submission_window: 600
 
 ## Minimum Stake Amount ##
-# The minimum amount of KOII that a user must stake in order to participate in the task.
-minimum_stake_amount: 0.1
+# The minimum amount of KOII or KPL that a user must stake in order to participate in the task.
+minimum_stake_amount: 0.01
 
 ## Task Bounty Type ##
 # KOII or KPL
@@ -76,7 +76,7 @@ total_bounty_amount: 10
 ## Bounty Amount per Round ##
 # The maximum amount that can be distributed per round.
 # If the actual distribution per round exceeds this amount, the distribution list will fail.
-bounty_amount_per_round: 0.1
+bounty_amount_per_round: 0.01
 
 ## Allowed Failed Distributions ##
 # Number of retries allowed for the distribution list if it is fails audit.
