@@ -6,21 +6,6 @@ Extension of Koii Task Template for developing Orca Tasks.
 
 If you're developing your first task, we recommend you gr through Lesson 1 of the [EZSandbox](https://github.com/koii-network/ezsandbox) before diving into Orca. This will give you a good grounding in how tasks work. If you'd like to dive deeper, check out our [docs](https://www.koii.network/docs/concepts/what-are-tasks/what-are-tasks).
 
-## Using Orca
-
-The Orca task template is designed to simplify the steps needed for integration with Koii Tasks. To that end, there are only two main elements you need to configure:
-
-1. Container creation
-2. Task endpoints
-
-### Container Creation
-
-A sample container is provided in the `container` folder.
-
-### Container Port
-
-The container must listen on port 8080.
-
 ### Task Functions
 
 Every Koii Task must perform 4 functions:
@@ -40,6 +25,22 @@ The fourth function, `distribution` defines your compensation logic, and can be 
 - `submission(roundNumber)`: Makes a get request to the endpoint `/submission/:roundNumber`, then uploads the submission data to IPFS and returns the file CID to be submitted on chain as the submission proof.
 - `audit(submission, roundNumber)`: Retrieves the submission data from IPFS using the CID that was submitted on chain. Makes a post request to `/audit` and returns the result.
 - `distribution(submitters, bounty, roundNumber)`: The default code deducts 70% of the stake for nodes that fail audit and distributes the bounty for that round (defined by `bounty_per_round` in your `config-task.yml`) equally between all nodes that pass audit.
+
+## Using Orca
+
+The Orca task template is designed to simplify the steps needed for integration with Koii Tasks. To that end, there are only two main elements you need to configure:
+
+1. Container creation
+2. Task endpoints
+
+### Container Creation
+
+A sample container is provided in the `container` folder.
+
+### Container Port
+
+The container must listen on port 8080.
+
 
 ### Container Endpoints
 
