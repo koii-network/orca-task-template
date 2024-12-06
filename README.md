@@ -21,6 +21,26 @@ A sample container is provided in the `container` folder.
 
 The container must listen on port 8080.
 
+### Task Functions
+
+Every Koii Task must perform 4 functions:
+
+1. Task
+2. Submission
+3. Audit
+4. Distribute rewards
+
+These four functions are defined in the file `src/index.js`.
+
+In a regular Koii task, you would write your task logic here. In the case of an Orca task, three of these functions make calls to your HTTP endpoints within your container. In most cases, you will not need to edit these functions.
+
+The fourth function, `distribution` defines your compensation logic, and can be edited as needed.
+
+- `task(roundNumber)`: Makes a get request to the endpoint `/task/:roundNumber`.
+- `submission(roundNumber)`: Makes a get request to the endpoint `/submission/:roundNumber`, then uploads the submission data to IPFS and returns the file CID to be submitted on chain as the submission proof.
+- `audit(submission, roundNumber)`: Retrieves the submission data from IPFS using the CID that was submitted on chain. Makes a post request to `/audit` and returns the result.
+- `distribution(submitters, bounty, roundNumber)`: The default code deducts 70% of the stake for nodes that fail audit and distributes the bounty for that round (defined by `bounty_per_round` in your `config-task.yml`) equally between all nodes that pass audit.
+
 ### Container Endpoints
 
 Your container must have 4 HTTP endpoints:
@@ -43,26 +63,6 @@ If you have a more complex configuration, you can define a podSpec in `src/orcaS
 <!-- ### SSL (optional)
 
 If you would like to use SSL, specify a certificate for rootCA. -->
-
-### Task Functions
-
-Every Koii Task must perform 4 functions:
-
-1. Task
-2. Submission
-3. Audit
-4. Distribute rewards
-
-These four functions are defined in the file `src/index.js`.
-
-In a regular Koii task, you would write your task logic here. In the case of an Orca task, three of these functions make calls to your HTTP endpoints within your container. In most cases, you will not need to edit these functions.
-
-The fourth function, `distribution` defines your compensation logic, and can be edited as needed.
-
-- `task(roundNumber)`: Makes a get request to the endpoint `/task/:roundNumber`.
-- `submission(roundNumber)`: Makes a get request to the endpoint `/submission/:roundNumber`, then uploads the submission data to IPFS and returns the file CID to be submitted on chain as the submission proof.
-- `audit(submission, roundNumber)`: Retrieves the submission data from IPFS using the CID that was submitted on chain. Makes a post request to `/audit` and returns the result.
-- `distribution(submitters, bounty, roundNumber)`: The default code deducts 70% of the stake for nodes that fail audit and distributes the bounty for that round (defined by `bounty_per_round` in your `config-task.yml`) equally between all nodes that pass audit.
 
 ### Deploy Task
 
