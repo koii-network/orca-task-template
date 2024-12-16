@@ -15,8 +15,7 @@ export async function audit(
   console.log(`AUDIT SUBMISSION FOR ROUND ${roundNumber}`);
   const submissionFile = await getFile(submission);
   const orcaClient = await getOrcaClient();
-  const orca = await orcaClient.get();
-  const result = await orca.podCall(`audit`, {
+  const result = await orcaClient.podCall(`audit`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
