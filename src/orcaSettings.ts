@@ -28,7 +28,7 @@ const podId = TASK_ID;
 //         path: ${basePath}/orca/my-volume
 //         type: DirectoryOrCreate`;
 
-const podSpec = null;
+const podSpec = undefined;
 
 export const config = {
   // location of your docker image

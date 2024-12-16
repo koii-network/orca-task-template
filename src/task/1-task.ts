@@ -1,6 +1,7 @@
 import { getOrcaClient } from '@_koii/task-manager/extensions';
 
-export async function task(roundNumber) {
+
+export async function task(roundNumber: number): Promise<void> {
   /**
    * Run your task and store the proofs to be submitted for auditing
    * It is expected you will store the proofs in your container
