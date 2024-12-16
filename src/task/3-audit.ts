@@ -1,7 +1,11 @@
 import { getFile } from '../helpers.js';
 import { getOrcaClient } from '@_koii/task-manager/extensions';
 
-export async function audit(cid, roundNumber) {
+export async function audit(
+  submission: string,
+  roundNumber: number,
+  submitterKey: string,
+): Promise<boolean | void> {
   /**
    * Audit a submission
    * This function should return true if the submission is correct, false otherwise
@@ -9,7 +13,7 @@ export async function audit(cid, roundNumber) {
    * and sends them to your container for auditing
    */
   console.log(`AUDIT SUBMISSION FOR ROUND ${roundNumber}`);
-  const submission = await getFile(cid);
+  const submissionFile = await getFile(submission);
   const orcaClient = await getOrcaClient();
   const orca = await orcaClient.get();
   const result = await orca.podCall(`audit`, {
@@ -17,7 +21,7 @@ export async function audit(cid, roundNumber) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(submission),
+    body: JSON.stringify(submissionFile),
   });
   return result;
 }

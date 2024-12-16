@@ -1,7 +1,7 @@
 import { storeFile } from '../helpers.js';
 import { getOrcaClient } from '@_koii/task-manager/extensions';
 
-export async function submission(roundNumber) {
+export async function submission(roundNumber: number): Promise<string | void> {
   /**
    * Retrieve the task proofs from your container and submit for auditing
    * Must return a string of max 512 bytes to be submitted on chain
