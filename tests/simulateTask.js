@@ -50,7 +50,7 @@ async function executeTasks() {
     }
   }
   console.log('Deleting pod...');
-  // deletePod();
+  deletePod();
   console.log('TIME METRICS BELOW');
   function metrics(name, times) {
     const average = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
