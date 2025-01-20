@@ -69,9 +69,9 @@ def fetch_submission(roundNumber):
 @app.post("/audit")
 def audit_submission():
     print("Auditing submission")
-    data = request.json
+    data = request.get_json()
     audit_result = data["submission"] == "Hello World!"
-    return jsonify({audit_result})
+    return jsonify({"audit_result": audit_result})
 
 
 if __name__ == "__main__":

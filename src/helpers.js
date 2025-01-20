@@ -4,11 +4,14 @@ import fs from 'fs';
 
 export async function storeFile(data, filename = 'submission.json') {
   // Create a new instance of the Koii Storage Client
-  const client = new KoiiStorageClient();
+  const client = KoiiStorageClient.getInstance();
   const basePath = await namespaceWrapper.getBasePath();
   try {
     // Write the data to a temp file
-    fs.writeFileSync(`${basePath}/${filename}`, JSON.stringify(data));
+    fs.writeFileSync(
+      `${basePath}/${filename}`,
+      typeof data === 'string' ? data : JSON.stringify(data),
+    );
 
     // Get the user staking account, to be used for signing the upload request
     const userStaking = await namespaceWrapper.getSubmitterAccount();
@@ -28,7 +31,7 @@ export async function storeFile(data, filename = 'submission.json') {
 }
 
 export async function getFile(cid, filename = 'submission.json') {
-  const storageClient = await getOrcaClient();
+  const storageClient = KoiiStorageClient.getInstance();
   const fileBlob = await storageClient.getFile(cid, filename);
   return await fileBlob.text();
 }
