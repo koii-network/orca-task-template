@@ -15,3 +15,4 @@ taskStateInfoKeypair.json
 localKOIIDB.db
 metadata.json
 .npmrc
+*.pem
