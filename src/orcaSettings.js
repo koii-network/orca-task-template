@@ -32,7 +32,7 @@ const podSpec = null;
 
 export const config = {
   // location of your docker image
-  imageURL: 'docker.io/labrocadabro/orca:hello-world',
+  imageURL: 'docker.io/labrocadabro/orca:hello-world-v2',
   // if you are using a podSpec, edit it in podSpec.js
   customPodSpec: podSpec,
   // SSL

@@ -19,5 +19,6 @@ export async function audit(cid, roundNumber) {
     },
     body: JSON.stringify({ submission }),
   });
-  return result;
+  console.log({ result });
+  return result.data;
 }

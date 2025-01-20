@@ -71,7 +71,8 @@ def audit_submission():
     print("Auditing submission")
     data = request.get_json()
     audit_result = data["submission"] == "Hello World!"
-    return jsonify({"audit_result": audit_result})
+    # audit result must be a boolean
+    return jsonify(audit_result)
 
 
 if __name__ == "__main__":
