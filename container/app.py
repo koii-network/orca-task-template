@@ -36,7 +36,7 @@ def health_check():
     return "OK"
 
 
-@app.get("/task/<roundNumber>")
+@app.post("/task/<roundNumber>")
 def start_task(roundNumber):
     print("Task started for round: " + roundNumber)
     db = get_db()

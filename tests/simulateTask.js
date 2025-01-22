@@ -89,7 +89,7 @@ setTimeout(executeTasks, 1500);
 function deletePod() {
   function execSync(cmdstr) {
     try {
-      const stdout = child_process.execSync(cmdstr);
+      child_process.execSync(cmdstr);
     } catch (error) {
       console.error(error);
     }

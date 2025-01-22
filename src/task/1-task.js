@@ -9,7 +9,7 @@ export async function task(roundNumber) {
   console.log(`EXECUTE TASK FOR ROUND ${roundNumber}`);
   try {
     const orcaClient = await getOrcaClient();
-    await orcaClient.podCall(`task/${roundNumber}`);
+    await orcaClient.podCall(`task/${roundNumber}`, { method: 'POST' });
   } catch (error) {
     console.error('EXECUTE TASK ERROR:', error);
   }
