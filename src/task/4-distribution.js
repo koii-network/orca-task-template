@@ -2,7 +2,7 @@
 // 0.7 = 70%
 const SLASH_PERCENT = 0.7;
 
-export function distribution(submitters, bounty, roundNumber) {
+export async function distribution(submitters, bounty, roundNumber) {
   /**
    * Generate the reward list for a given round
    * This function should return an object with the public keys of the submitters as keys
@@ -35,7 +35,7 @@ export function distribution(submitters, bounty, roundNumber) {
       distributionList[submitter.publicKey] = -slashedStake;
 
       // Log that the submitter's stake has been slashed
-      console.log("CANDIDATE STAKE SLASHED", submitter.publicKey, slashedStake);
+      console.log('CANDIDATE STAKE SLASHED', submitter.publicKey, slashedStake);
 
       // If the submitter's votes are positive, add their public key to the approved submitters list
     } else {
@@ -45,17 +45,17 @@ export function distribution(submitters, bounty, roundNumber) {
 
   // If no submitters submitted correct values, return the current distribution list
   if (approvedSubmitters.length === 0) {
-    console.log("NO NODES TO REWARD");
+    console.log('NO NODES TO REWARD');
     return distributionList;
   }
 
   // Calculate the reward for each approved submitter by dividing the bounty per round equally among them
   const reward = Math.floor(bounty / approvedSubmitters.length);
 
-  console.log("REWARD PER NODE", reward);
+  console.log('REWARD PER NODE', reward);
 
   // Assign the calculated reward to each approved submitter
-  approvedSubmitters.forEach((candidate) => {
+  approvedSubmitters.forEach(candidate => {
     distributionList[candidate] = reward;
   });
 
