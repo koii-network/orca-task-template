@@ -17,6 +17,14 @@ function sleep(ms) {
 }
 await namespaceWrapper.stakeOnChain();
 async function executeTasks() {
+  const podStopCommand = `podman pod stop undefined`;
+  const podRmCommand = `podman pod rm undefined`;
+  try {
+    execSync(podStopCommand);
+    execSync(podRmCommand);
+  } catch (error) {
+    console.error(error.stderr);
+  }
   const orcaInstance = await bootstrap();
   orcaInstance.setErrorHandler(msg => console.error('ORCA: ', msg));
   orcaInstance.setWarnHandler(msg => console.warn('ORCA: ', msg));
@@ -100,6 +108,6 @@ function deletePod() {
     execSync(podStopCommand);
     execSync(podRmCommand);
   } catch (error) {
-    this.logger.error(error.stderr);
+    console.error(error.stderr);
   }
 }
