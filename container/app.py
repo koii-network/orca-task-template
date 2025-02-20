@@ -61,7 +61,7 @@ def fetch_submission(roundNumber):
     result = query.fetchone()
     close_db()
     if result:
-        return jsonify(result["submission"])
+        return jsonify({"message": result["submission"]})
     else:
         return "Submission not found", 404
 
@@ -70,7 +70,7 @@ def fetch_submission(roundNumber):
 def audit_submission():
     print("Auditing submission")
     data = request.get_json()
-    audit_result = data["submission"] == "Hello World!"
+    audit_result = data["submission"]["message"] == "Hello World!"
     # audit result must be a boolean
     return jsonify(audit_result)
 
