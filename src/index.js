@@ -1,6 +1,6 @@
 import { initializeTaskManager } from '@_koii/task-manager';
 import { initializeOrcaClient } from '@_koii/task-manager/extensions';
-import { config } from './orcaSettings.js';
+import { getConfig } from './orcaSettings.js';
 // any custom setup logic you need
 import { setup } from './task/0-setup.js';
 
@@ -23,4 +23,4 @@ initializeTaskManager({
   distribution,
   routes,
 });
-initializeOrcaClient(config);
+initializeOrcaClient(getConfig);

@@ -1,6 +1,6 @@
 {
   "name": "js_app_deploy",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "",
   "main": "src/index.js",
   "type": "module",
@@ -16,10 +16,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@_koii/namespace-wrapper": "^1.0.19",
-    "@_koii/orca-node": "0.1.6",
+    "@_koii/namespace-wrapper": "^1.0.23",
+    "@_koii/orca-node": "0.1.20",
     "@_koii/storage-task-sdk": "^1.2.7",
-    "@_koii/task-manager": "^1.0.7",
+    "@_koii/task-manager": "^1.0.13",
     "@_koii/web3.js": "^0.1.11",
     "axios": "^1.7.2",
     "cross-spawn": "^7.0.3",
