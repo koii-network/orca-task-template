@@ -1,5 +1,5 @@
 {
-  "name": "js_app_deploy",
+  "name": "orca-task",
   "version": "2.2.0",
   "description": "",
   "main": "src/index.js",
