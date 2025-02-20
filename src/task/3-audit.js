@@ -17,20 +17,6 @@ export async function audit(cid, roundNumber, submitterKey) {
   const submission = JSON.parse(submissionString);
   console.log({ submission });
 
-  // verify the hash of the submission
-  const submissionWithoutHash = {
-    ...submission,
-    hash: undefined,
-  };
-  const hash = createHash('sha256')
-    .update(JSON.stringify(submissionWithoutHash))
-    .digest('hex');
-
-  if (hash !== submission.hash) {
-    console.error('INVALID HASH');
-    return false;
-  }
-
   // verify the signature of the submission
   const signaturePayload = await namespaceWrapper.verifySignature(
     submission.signature,
@@ -44,8 +30,11 @@ export async function audit(cid, roundNumber, submitterKey) {
     console.error('INVALID SIGNATURE');
     return false;
   }
+
+  // retrieve the original message
   const data = JSON.parse(signaturePayload.data);
 
+  // verify the message
   if (
     data.taskId !== TASK_ID ||
     data.roundNumber !== roundNumber ||
@@ -64,7 +53,7 @@ export async function audit(cid, roundNumber, submitterKey) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ submission }),
+    body: JSON.stringify({ submission: data }),
   });
 
   // return the result of the audit (true or false)

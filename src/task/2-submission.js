@@ -31,16 +31,9 @@ export async function submission(roundNumber) {
       },
       stakingKeypair.secretKey,
     );
-    submission.signature = signature;
-
-    // hash the submission
-    const hash = createHash('sha256')
-      .update(JSON.stringify(submission))
-      .digest('hex');
-    submission.hash = hash;
 
     // store the submission on IPFS
-    const cid = await storeFile(submission, 'submission.json');
+    const cid = await storeFile({ signature }, 'submission.json');
     console.log('SUBMISSION CID:', cid);
     return cid;
   } catch (error) {
