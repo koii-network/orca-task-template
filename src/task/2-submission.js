@@ -27,7 +27,7 @@ export async function submission(roundNumber) {
         taskId: TASK_ID,
         roundNumber: roundNumber,
         stakingKey: stakingKey,
-        ...result.data,
+        ...submission,
       },
       stakingKeypair.secretKey,
     );
